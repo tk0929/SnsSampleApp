@@ -10,7 +10,6 @@ import UIKit
 class MainTabController: UITabBarController {
 
     
-    
 //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -23,21 +22,35 @@ class MainTabController: UITabBarController {
     
 //MARK: - Helpers
     
-    func configureViewControllers() {
+    private func configureViewControllers() {
         
-        let feed = FeedViewController()
+        view.backgroundColor = .white
         
-        let search = SearchViewController()
+        let feed = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: FeedViewController())
         
-        let imageSelecter = ImageSelecterViewController()
+        let search = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: SearchViewController())
         
-        let notification = NotificationViewController()
+        let imageSelecter = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: ImageSelecterViewController())
         
-        let profile =  ProfileleViewController()
+        let notification = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: NotificationViewController())
+        
+        let profile =  templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: ProfileleViewController())
         
         viewControllers = [feed,search,imageSelecter,notification,profile]
+        tabBar.tintColor = .black
+    }
+    
+    
+    private func templeteNavigationControlller(selectedImage: UIImage,unselectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
+        
+        let nav = UINavigationController(rootViewController: rootViewController)
+        nav.tabBarItem.image = unselectedImage
+        nav.tabBarItem.selectedImage = selectedImage
+        nav.navigationBar.tintColor = .black
+        return nav
         
     }
+
     
     
     

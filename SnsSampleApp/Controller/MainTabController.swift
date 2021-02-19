@@ -26,15 +26,17 @@ class MainTabController: UITabBarController {
         
         view.backgroundColor = .white
         
-        let feed = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: FeedViewController())
+        let layout = UICollectionViewFlowLayout()
         
-        let search = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: SearchViewController())
+        let feed = templeteNavigationControlller(selectedImage: #imageLiteral(resourceName: "home_selected"),unselectedImage:#imageLiteral(resourceName: "home_unselected"), rootViewController: FeedViewController(collectionViewLayout: layout))
+    
+        let search = templeteNavigationControlller(selectedImage: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"), rootViewController: SearchViewController())
         
-        let imageSelecter = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: ImageSelecterViewController())
+        let imageSelecter = templeteNavigationControlller(selectedImage: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelecterViewController())
         
-        let notification = templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: NotificationViewController())
+        let notification = templeteNavigationControlller(selectedImage: #imageLiteral(resourceName: "like_selected"), unselectedImage: #imageLiteral(resourceName: "like_unselected"), rootViewController: NotificationViewController())
         
-        let profile =  templeteNavigationControlller(selectedImage: <#T##UIImage#>, unselectedImage: <#T##UIImage#>, rootViewController: ProfileleViewController())
+        let profile =  templeteNavigationControlller(selectedImage: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"), rootViewController: ProfileleViewController())
         
         viewControllers = [feed,search,imageSelecter,notification,profile]
         tabBar.tintColor = .black
@@ -50,7 +52,6 @@ class MainTabController: UITabBarController {
         return nav
         
     }
-
     
     
     

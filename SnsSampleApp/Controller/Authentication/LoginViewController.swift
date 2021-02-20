@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 50)
         label.setDimensions(height: 50, width: 200)
         label.textColor = .white
-
+        
         return label
     }()
     
@@ -54,13 +54,35 @@ class LoginViewController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("ログイン", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .orange
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return button
+    }()
+    
+    private let forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("パスワードを忘れた方はこちら", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        return button
+    }()
+    
+    private let dontHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributes:[NSAttributedString.Key: Any] = [ .foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
+        let boldAttributes:[NSAttributedString.Key: Any] = [ .foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
+        
+        let attributTitle = NSMutableAttributedString(string: "アカウントを持っていない方はこちら　", attributes: attributes)
+        attributTitle.append(NSAttributedString(string: "新規登録" ,attributes: boldAttributes))
+        button.setAttributedTitle(attributTitle, for: .normal)
         
         return button
     }()
@@ -90,12 +112,16 @@ class LoginViewController: UIViewController {
         loginLabel.centerX(inView: view)
         loginLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         
-        let stackView = UIStackView(arrangedSubviews: [emailTextField,passwordTextField,loginButton])
+        let stackView = UIStackView(arrangedSubviews: [emailTextField,passwordTextField,loginButton,forgotPasswordButton])
         stackView.axis = .vertical
         stackView.spacing = 20
         
         view.addSubview(stackView)
         stackView.anchor(top: loginLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+        
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.centerX(inView: view)
+        dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
         
     }

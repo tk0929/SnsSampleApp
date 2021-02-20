@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6739FD25E0F98F00DDE7F4 /* FeedCell.swift */; };
 		4A673A0525E0FB7600DDE7F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A673A0425E0FB7600DDE7F4 /* UIView+Extension.swift */; };
+		4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABC925E14BD200C330D3 /* LoginViewController.swift */; };
+		4A95ABCE25E14BE600C330D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */; };
+		4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABD025E165C200C330D3 /* CustumTextField.swift */; };
 		4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194EF259F7D050039B53C /* AppDelegate.swift */; };
 		4AB194F2259F7D050039B53C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194F1259F7D050039B53C /* SceneDelegate.swift */; };
 		4AB194F4259F7D050039B53C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194F3259F7D050039B53C /* ViewController.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		4A6739FD25E0F98F00DDE7F4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		4A673A0425E0FB7600DDE7F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		4A95ABC925E14BD200C330D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4A95ABD025E165C200C330D3 /* CustumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumTextField.swift; sourceTree = "<group>"; };
 		4AB194EC259F7D050039B53C /* SnsSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnsSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB194EF259F7D050039B53C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AB194F1259F7D050039B53C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A95ABC825E14BA700C330D3 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4A95ABC925E14BD200C330D3 /* LoginViewController.swift */,
+				4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		4AB194E3259F7D050039B53C = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				4A6739FD25E0F98F00DDE7F4 /* FeedCell.swift */,
+				4A95ABD025E165C200C330D3 /* CustumTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +151,7 @@
 		4AB1950D259F7EE80039B53C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4A95ABC825E14BA700C330D3 /* Authentication */,
 				4AB19514259F80EF0039B53C /* MainTabController.swift */,
 				4AFD132025DD6299001B0873 /* FeedViewCoontroller.swift */,
 				4AFD132325DD62C7001B0873 /* SearchViewController.swift */,
@@ -217,16 +234,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */,
 				4AB194F4259F7D050039B53C /* ViewController.swift in Sources */,
 				4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */,
 				4AFD132A25DD62F3001B0873 /* ProfileViewController.swift in Sources */,
 				4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */,
 				4AB19515259F80EF0039B53C /* MainTabController.swift in Sources */,
+				4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */,
 				4AFD132125DD6299001B0873 /* FeedViewCoontroller.swift in Sources */,
 				4AB194F2259F7D050039B53C /* SceneDelegate.swift in Sources */,
 				4AFD132425DD62C7001B0873 /* SearchViewController.swift in Sources */,
 				4AFD132725DD62DD001B0873 /* NotificationViewController.swift in Sources */,
 				4A673A0525E0FB7600DDE7F4 /* UIView+Extension.swift in Sources */,
+				4A95ABCE25E14BE600C330D3 /* SignUpViewController.swift in Sources */,
 				4AFD132D25DD6316001B0873 /* ImgaeSelecterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

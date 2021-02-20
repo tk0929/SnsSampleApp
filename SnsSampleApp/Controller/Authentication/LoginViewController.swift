@@ -58,8 +58,10 @@ class LoginViewController: UIViewController {
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
+        
         button.attributeTitle(firstTitle: "アカウントを持っていない場合　", secondTitle: "登録はこちら")
         button.addTarget(self, action: #selector(tappedDontHaveAccountButton), for: .touchUpInside)
+        
         return button
     }()
     

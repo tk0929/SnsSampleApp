@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
         
         button.attributeTitle(firstTitle: "アカウントを持っていない場合　", secondTitle: "登録はこちら")
         button.addTarget(self, action: #selector(tappedDontHaveAccountButton), for: .touchUpInside)
-        
+      
         return button
     }()
     
@@ -73,14 +73,13 @@ class LoginViewController: UIViewController {
         
         configureUI()
     }
-    
+
     //MARK: - Actions
-    
+ 
     @objc private func tappedDontHaveAccountButton() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     //MARK: - Helpers
     private func configureUI() {
@@ -88,6 +87,7 @@ class LoginViewController: UIViewController {
         configuregradientLayer()
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
+
         
         view.addSubview(loginLabel)
         loginLabel.centerX(inView: view)
@@ -96,6 +96,7 @@ class LoginViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [emailTextField,passwordTextField,loginButton,forgotPasswordButton])
         stackView.axis = .vertical
         stackView.spacing = 20
+
         view.addSubview(stackView)
         stackView.anchor(top: loginLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         

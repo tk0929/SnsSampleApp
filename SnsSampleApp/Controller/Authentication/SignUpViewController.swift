@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-    
+  
     //MARK: - Propaerties
     private let selectImageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -93,7 +93,6 @@ class SignUpViewController: UIViewController {
         view.addSubview(stackView)
         stackView.anchor(top: selectImageButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         
-        
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
@@ -101,7 +100,5 @@ class SignUpViewController: UIViewController {
         
         
     }
-    
-    
     
 }

@@ -12,6 +12,8 @@
 		4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABC925E14BD200C330D3 /* LoginViewController.swift */; };
 		4A95ABCE25E14BE600C330D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */; };
 		4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABD025E165C200C330D3 /* CustumTextField.swift */; };
+		4AB0D94325E1716200A1C7DF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D94225E1716200A1C7DF /* UIViewController+Extension.swift */; };
+		4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D94525E17ACA00A1C7DF /* UIButton+Extension.swift */; };
 		4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194EF259F7D050039B53C /* AppDelegate.swift */; };
 		4AB194F2259F7D050039B53C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194F1259F7D050039B53C /* SceneDelegate.swift */; };
 		4AB194F4259F7D050039B53C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB194F3259F7D050039B53C /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 		4A95ABC925E14BD200C330D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4A95ABD025E165C200C330D3 /* CustumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumTextField.swift; sourceTree = "<group>"; };
+		4AB0D94225E1716200A1C7DF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		4AB0D94525E17ACA00A1C7DF /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		4AB194EC259F7D050039B53C /* SnsSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnsSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB194EF259F7D050039B53C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AB194F1259F7D050039B53C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				4A673A0425E0FB7600DDE7F4 /* UIView+Extension.swift */,
+				4AB0D94225E1716200A1C7DF /* UIViewController+Extension.swift */,
+				4AB0D94525E17ACA00A1C7DF /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,7 +243,9 @@
 				4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */,
 				4AB194F4259F7D050039B53C /* ViewController.swift in Sources */,
 				4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */,
+				4AB0D94325E1716200A1C7DF /* UIViewController+Extension.swift in Sources */,
 				4AFD132A25DD62F3001B0873 /* ProfileViewController.swift in Sources */,
+				4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */,
 				4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */,
 				4AB19515259F80EF0039B53C /* MainTabController.swift in Sources */,
 				4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */,

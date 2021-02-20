@@ -21,32 +21,14 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private let emailTextField: UITextField = {
-        let textField = UITextField()
-        
-        textField.borderStyle = .none
-        textField.layer.cornerRadius = 10
-        textField.textColor = .white
-        textField.keyboardAppearance = .dark
+    private let emailTextField: CustumTextField = {
+        let textField = CustumTextField(placeholder: "Email")
         textField.keyboardType = .emailAddress
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.setHeight(50)
-        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
-        
         return textField
     }()
     
-    private let passwordTextField: UITextField = {
-        let textField = UITextField()
-        
-        textField.borderStyle = .none
-        textField.layer.cornerRadius = 10
-        textField.textColor = .white
-        textField.keyboardAppearance = .dark
-        textField.keyboardType = .emailAddress
-        textField.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        textField.setHeight(50)
-        textField.attributedPlaceholder = NSAttributedString(string: "password", attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+    private let passwordTextField: CustumTextField = {
+        let textField = CustumTextField(placeholder: "Password")
         textField.isSecureTextEntry = true
         
         

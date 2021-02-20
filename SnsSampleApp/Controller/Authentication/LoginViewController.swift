@@ -66,6 +66,8 @@ class LoginViewController: UIViewController {
         attributTitle.append(NSAttributedString(string: "新規登録" ,attributes: boldAttributes))
         button.setAttributedTitle(attributTitle, for: .normal)
         
+        button.addTarget(self, action: #selector(tappedDontHaveAccountButton), for: .touchUpInside)
+        
         return button
     }()
     
@@ -77,6 +79,14 @@ class LoginViewController: UIViewController {
         
         configureUI()
     }
+    
+    //MARK: - Actions
+    
+    @objc private func tappedDontHaveAccountButton() {
+        let vc = SignUpViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     //MARK: - Helpers
     private func configureUI() {

@@ -122,7 +122,7 @@ class FeedCell: UICollectionViewCell {
 //     MARK: - Actions
     
     @objc func tappedUserNameButton() {
-        print("DEBUG: tapped UserNameButton")
+       
     }
     
 //    MARK: - Helpers

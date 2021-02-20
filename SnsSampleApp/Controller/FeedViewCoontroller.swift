@@ -24,7 +24,7 @@ class FeedViewController: UICollectionViewController {
 //MARK: - Helpers
     private func configureUI() {
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ReuseIdentifier)
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: ReuseIdentifier)
     }
     
     
@@ -39,8 +39,7 @@ extension FeedViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier, for: indexPath) as! FeedCell
         return cell
     }
     
@@ -51,7 +50,13 @@ extension FeedViewController {
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        
+        let width = view.frame.width
+//     profileImageの高さと上下の感覚を足す
+        var hight = width + 8 + 40 + 8
+//　　　この高さが現段階ではちょうどいい気がする
+        hight += 120
+        return CGSize(width: width, height: hight)
     }
     
 }

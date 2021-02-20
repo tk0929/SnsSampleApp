@@ -8,11 +8,31 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    //MARK: - Propaerties
+    
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .blue
+        configureUI()
+      
     }
+    
+    
+    //MARK: - Actions
+    
+    
+    
+    
+    //MARK: - Helpers
+    
+    private func configureUI() {
+        
+        configuregradientLayer()
+        
+    }
+    
+    
     
 }

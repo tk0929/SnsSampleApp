@@ -91,14 +91,9 @@ class LoginViewController: UIViewController {
     //MARK: - Helpers
     private func configureUI() {
         
+        configuregradientLayer()
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        //        グラデーションを利用した背景色の設定
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemOrange.cgColor, UIColor.systemPink.cgColor]
-        gradient.locations = [0,1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
         
         view.addSubview(loginLabel)
         loginLabel.centerX(inView: view)

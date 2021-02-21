@@ -10,9 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     
     //MARK: - Propaerties
+    
+    private var viewModel = LoginViewModel()
+    
     private let loginLabel: UILabel = {
-        
         let label = UILabel()
+        
         label.text = "ようこそ"
         label.font = UIFont.systemFont(ofSize: 50)
         label.setDimensions(height: 50, width: 200)
@@ -31,7 +34,6 @@ class LoginViewController: UIViewController {
         let textField = CustumTextField(placeholder: "Password")
         textField.isSecureTextEntry = true
         
-        
         return textField
     }()
     
@@ -39,7 +41,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("ログイン", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).withAlphaComponent(0.7)
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -49,7 +51,7 @@ class LoginViewController: UIViewController {
     
     private let forgotPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("パスワードを忘れた方はこちら", for: .normal)
+        button.setTitle("パスワードを忘れた場合はこちら", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         
@@ -61,7 +63,7 @@ class LoginViewController: UIViewController {
         
         button.attributeTitle(firstTitle: "アカウントを持っていない場合　", secondTitle: "登録はこちら")
         button.addTarget(self, action: #selector(tappedDontHaveAccountButton), for: .touchUpInside)
-      
+        
         return button
     }()
     
@@ -72,13 +74,24 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        configureNotificationObservers()
     }
-
+    
     //MARK: - Actions
- 
+    
     @objc private func tappedDontHaveAccountButton() {
         let vc = SignUpViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    @objc private func textFieldDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        }else{
+            viewModel.password = sender.text
+        }
+        updateForm()
     }
     
     //MARK: - Helpers
@@ -87,7 +100,7 @@ class LoginViewController: UIViewController {
         configuregradientLayer()
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-
+        
         
         view.addSubview(loginLabel)
         loginLabel.centerX(inView: view)
@@ -96,7 +109,7 @@ class LoginViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [emailTextField,passwordTextField,loginButton,forgotPasswordButton])
         stackView.axis = .vertical
         stackView.spacing = 20
-
+        
         view.addSubview(stackView)
         stackView.anchor(top: loginLabel.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         
@@ -104,8 +117,22 @@ class LoginViewController: UIViewController {
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
-        
     }
     
+    private func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+}
+
+//MARK: - FormViewModel
+extension LoginViewController: FormViewModel {
+    //    ログインボタンの色を更新する
+    func updateForm() {
+        loginButton.backgroundColor = viewModel.buttonBackGroungdColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsVaild
+    }
     
 }

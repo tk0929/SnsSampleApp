@@ -8,8 +8,11 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-  
+    
     //MARK: - Propaerties
+    
+    private var viewModel = SignUpViewModel()
+    
     private let selectImageButton: UIButton = {
         let button = UIButton(type: .system)
         
@@ -40,7 +43,7 @@ class SignUpViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("新規登録", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).withAlphaComponent(0.7)
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -58,16 +61,15 @@ class SignUpViewController: UIViewController {
     }()
     
     
-
-    
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        configureNotificationObservers()
         
     }
+    
     
     
     //MARK: - Actions
@@ -75,7 +77,19 @@ class SignUpViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
+    @objc private func textFieldDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if sender == passwordTextField{
+            viewModel.password = sender.text
+        } else if sender == fullNameTextField {
+            viewModel.fullName = sender.text
+        } else {
+            viewModel.userName = sender.text
+        }
+        
+        updateForm()
+    }
     
     //MARK: - Helpers
     
@@ -97,8 +111,29 @@ class SignUpViewController: UIViewController {
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
-        
-        
+    }
+    
+    private func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        fullNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        userNameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
 }
+
+
+//MARK: - FormViewModel
+extension SignUpViewController: FormViewModel {
+    //    ログインボタンの色を更新する
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBackGroungdColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsVaild
+    }
+    
+    
+    
+}
+
+

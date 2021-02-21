@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.isEnabled = false
         
         return button
     }()

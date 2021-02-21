@@ -42,12 +42,14 @@ class SignUpViewController: UIViewController {
     
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
+        
         button.setTitle("新規登録", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).withAlphaComponent(0.7)
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.isEnabled = false
         
         return button
     }()

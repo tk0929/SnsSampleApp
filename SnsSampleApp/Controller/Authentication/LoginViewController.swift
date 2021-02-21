@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.isEnabled = false
+        button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
         
         return button
     }()
@@ -78,6 +80,21 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - Actions
+    
+    @objc private func tappedLoginButton() {
+        
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        AuthUser.loginUser(withEmail: email, password: password) { ( result, error ) in
+            
+            if let err = error {
+                print("ログイン失敗: \(err.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     @objc private func tappedDontHaveAccountButton() {
         let vc = SignUpViewController()

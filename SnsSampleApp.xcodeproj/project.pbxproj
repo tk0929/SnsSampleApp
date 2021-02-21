@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABC925E14BD200C330D3 /* LoginViewController.swift */; };
 		4A95ABCE25E14BE600C330D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */; };
 		4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABD025E165C200C330D3 /* CustumTextField.swift */; };
+		4AA24C8C25E24E060087175A /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA24C8B25E24E060087175A /* ImageUploader.swift */; };
+		4AA24C9025E24E1E0087175A /* AuthUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA24C8F25E24E1E0087175A /* AuthUser.swift */; };
 		4AB0D94325E1716200A1C7DF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D94225E1716200A1C7DF /* UIViewController+Extension.swift */; };
 		4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D94525E17ACA00A1C7DF /* UIButton+Extension.swift */; };
 		4AB0D94C25E21AB600A1C7DF /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0D94B25E21AB600A1C7DF /* AuthenticationViewModel.swift */; };
@@ -39,6 +41,8 @@
 		4A95ABC925E14BD200C330D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4A95ABD025E165C200C330D3 /* CustumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumTextField.swift; sourceTree = "<group>"; };
+		4AA24C8B25E24E060087175A /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		4AA24C8F25E24E1E0087175A /* AuthUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUser.swift; sourceTree = "<group>"; };
 		4AB0D94225E1716200A1C7DF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		4AB0D94525E17ACA00A1C7DF /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		4AB0D94B25E21AB600A1C7DF /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -109,11 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				4AB19504259F7D2D0039B53C /* Extension */,
+				4AB19505259F7D7D0039B53C /* API */,
 				4AB1950B259F7E090039B53C /* Model */,
 				4AB1950A259F7DF30039B53C /* View */,
 				4AB19507259F7DA50039B53C /* ViewModel */,
 				4AB1950D259F7EE80039B53C /* Controller */,
-				4AB19505259F7D7D0039B53C /* API */,
 				4AB194EF259F7D050039B53C /* AppDelegate.swift */,
 				4AB194F1259F7D050039B53C /* SceneDelegate.swift */,
 				4AB194F3259F7D050039B53C /* ViewController.swift */,
@@ -139,6 +143,8 @@
 		4AB19505259F7D7D0039B53C /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4AA24C8B25E24E060087175A /* ImageUploader.swift */,
+				4AA24C8F25E24E1E0087175A /* AuthUser.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -187,7 +193,6 @@
 				931BFAB01F208F6CC87DDF29 /* Pods-SnsSampleApp.debug.xcconfig */,
 				B4F04634219F800076A31A2C /* Pods-SnsSampleApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -317,10 +322,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */,
+				4AA24C8C25E24E060087175A /* ImageUploader.swift in Sources */,
 				4AB194F4259F7D050039B53C /* ViewController.swift in Sources */,
 				4AB0D94C25E21AB600A1C7DF /* AuthenticationViewModel.swift in Sources */,
 				4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */,
 				4AB0D94325E1716200A1C7DF /* UIViewController+Extension.swift in Sources */,
+				4AA24C9025E24E1E0087175A /* AuthUser.swift in Sources */,
 				4AFD132A25DD62F3001B0873 /* ProfileViewController.swift in Sources */,
 				4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */,
 				4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */,

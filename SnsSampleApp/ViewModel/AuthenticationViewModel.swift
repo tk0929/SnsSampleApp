@@ -23,7 +23,6 @@ struct LoginViewModel: AuthenticationViewModel {
     var email: String?
     var password: String?
     
-    
     var formIsVaild: Bool {
         return email?.isEmpty == false && password?.isEmpty == false
     }
@@ -35,10 +34,7 @@ struct LoginViewModel: AuthenticationViewModel {
     var buttonTitleColor: UIColor {
         return formIsVaild ? .white : UIColor(white: 1, alpha: 0.7)
     }
-    
-    
 }
-
 
 struct SignUpViewModel: AuthenticationViewModel {
     

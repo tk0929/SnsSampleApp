@@ -42,9 +42,41 @@ class ProfileHeader: UICollectionReusableView {
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(teppedEditProfileButton), for: .touchUpInside)
         
-       return button
+        return button
     }()
     
+    
+    private lazy var postCountLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.attributedText = setAttributeText(value: 1, label: "投稿")
+        return label
+        
+    }()
+    
+    private lazy var followingLabel: UILabel = {
+        let label = UILabel()
+        
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.attributedText = setAttributeText(value: 1, label: "フォロー")
+        
+        return label
+    }()
+    
+    
+    private lazy var followersLabel: UILabel = {
+        let label = UILabel()
+        
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.attributedText = setAttributeText(value: 1, label: "フォロワー")
+        
+        return label
+    }()
+    
+ 
     
     
     //MARK: - Lifecycle
@@ -61,8 +93,16 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(nameLabel)
         nameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, paddingTop: 12, paddingLeft: 12)
         
+        
         addSubview(editProfileButton)
         editProfileButton.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24)
+        
+        
+  
+        let stackView = UIStackView(arrangedSubviews: [postCountLabel,followingLabel,followersLabel])
+        addSubview(stackView)
+        stackView.centerY(inView: profileImageView)
+        stackView.anchor(left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12, height: 50)
         
         
     }
@@ -78,5 +118,17 @@ class ProfileHeader: UICollectionReusableView {
         print("teppedEditProfileButton")
         
     }
+    
+    //MARK: - Helpers
+    
+    func setAttributeText(value: Int, label: String) -> NSAttributedString {
+        
+        let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
+        
+        return attributeText
+    }
+    
+    
     
 }

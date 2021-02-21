@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
         button.setDimensions(height: 140, width: 140)
+        button.addTarget(self, action: #selector(teppedSelectImageButton), for: .touchUpInside)
         
         return button
     }()
@@ -91,6 +92,17 @@ class SignUpViewController: UIViewController {
         updateForm()
     }
     
+    @objc private func teppedSelectImageButton() {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    
     //MARK: - Helpers
     
     private func configureUI() {
@@ -131,9 +143,20 @@ extension SignUpViewController: FormViewModel {
         signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         signUpButton.isEnabled = viewModel.formIsVaild
     }
-    
-    
-    
 }
 
-
+//MARK: - UIImagePickerControllerDelegate,UINavigationControllerDelegate
+extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let selectedImgae = info[.editedImage] as? UIImage else { return }
+        selectImageButton.layer.cornerRadius = selectImageButton.frame.width / 2
+        selectImageButton.layer.masksToBounds = true
+        selectImageButton.layer.borderColor = UIColor.white.cgColor
+        selectImageButton.layer.borderWidth = 2
+        selectImageButton.setImage(selectedImgae.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+}

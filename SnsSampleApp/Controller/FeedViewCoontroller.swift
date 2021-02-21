@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedViewController: UICollectionViewController {
     
     private let ReuseIdentifier = "Cell"
     
-//MARK: - Lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,18 +20,36 @@ class FeedViewController: UICollectionViewController {
         
     }
     
+    //MARK: - Actions
+   @objc private func teppedLogoutButton() {
     
+        do {
+            try Auth.auth().signOut()
+//            ログアウト後ログイン画面へ遷移
+            let controller = LoginViewController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+            
+        } catch {
+            print("ログアウト失敗: \(error.localizedDescription)")
+        }
+
     
-//MARK: - Helpers
+    }
+    
+    //MARK: - Helpers
     private func configureUI() {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: ReuseIdentifier)
+//        ログアウトボタン
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "ログアウト", style: .plain, target: self, action: #selector(teppedLogoutButton))
     }
     
     
 }
 
-//MARK: - UIColelctionViewDataSource
+    //MARK: - UIColelctionViewDataSource
 
 extension FeedViewController {
     

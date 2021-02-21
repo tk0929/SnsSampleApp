@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController {
     //MARK: - Propaerties
     
     private var viewModel = SignUpViewModel()
+    private var profileImage: UIImage?
     
     private let selectImageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -50,6 +51,7 @@ class SignUpViewController: UIViewController {
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(tappedSignUpButton), for: .touchUpInside)
         
         return button
     }()
@@ -90,7 +92,6 @@ class SignUpViewController: UIViewController {
         } else {
             viewModel.userName = sender.text
         }
-        
         updateForm()
     }
     
@@ -101,7 +102,25 @@ class SignUpViewController: UIViewController {
         imagePicker.allowsEditing = true
         
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @objc private func tappedSignUpButton() {
         
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fulleName = fullNameTextField.text else { return }
+        guard let userName = userNameTextField.text?.lowercased() else { return }
+        guard let profileImage = self.profileImage else { return }
+        
+        let credentials = AuthCredensials(email: email, passwoerd: password, fullName: fulleName, userName: userName, profileImage: profileImage)
+        
+        AuthUser.signUpUser(withCredential: credentials) { error in
+            if let err = error {
+                print("ユーザの登録へ失敗: \(err.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -152,6 +171,8 @@ extension SignUpViewController: UIImagePickerControllerDelegate,UINavigationCont
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let selectedImgae = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImgae
+        
         selectImageButton.layer.cornerRadius = selectImageButton.frame.width / 2
         selectImageButton.layer.masksToBounds = true
         selectImageButton.layer.borderColor = UIColor.white.cgColor

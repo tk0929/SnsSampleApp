@@ -7,19 +7,37 @@
 
 import UIKit
 
+private let cellReuseIdentifier = "ProfileCell"
+private let headerReuseIdentifier = "ProfileHeader"
+
 class ProfileViewController: UICollectionViewController {
+    
     //MARK: - Propaerties
     
-    private let cellReuseIdentifier = "ProfileCell"
-    private let headerReuseIdentifier = "ProfileHeader"
+    var user: User? {
+        didSet { collectionView.reloadData() }
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCollectionView()
+        fetchCurrentUser()
         
     }
+    
+    //MARK: - API
+    
+    private func fetchCurrentUser() {
+        UserService.fetchCurrentUserData { userData in
+            self.user = userData
+            self.navigationItem.title = userData.userName
+            
+        }
+    }
+    
+    
     //MARK: - Helpers
     
     private func configureCollectionView() {
@@ -45,7 +63,12 @@ extension ProfileViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind , withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! ProfileHeader
+        
+        if let user = user {
+            header.viewModel = ProfileHeaderViewModel(user: user)
+        }
         
         return header
     }

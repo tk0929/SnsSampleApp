@@ -65,7 +65,6 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
-    
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
         
@@ -76,7 +75,26 @@ class ProfileHeader: UICollectionReusableView {
         return label
     }()
     
- 
+    let gridButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
+        return button
+    }()
+
+    let listButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
+        return button
+    }()
+        
+    let bookMarkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
+        return button
+    }()
+    
     
     
     //MARK: - Lifecycle
@@ -99,10 +117,30 @@ class ProfileHeader: UICollectionReusableView {
         
         
   
-        let stackView = UIStackView(arrangedSubviews: [postCountLabel,followingLabel,followersLabel])
-        addSubview(stackView)
-        stackView.centerY(inView: profileImageView)
-        stackView.anchor(left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12, height: 50)
+        let labelStack = UIStackView(arrangedSubviews: [postCountLabel,followingLabel,followersLabel])
+        labelStack.distribution = .fillEqually
+        addSubview(labelStack)
+        labelStack.centerY(inView: profileImageView)
+        labelStack.anchor(left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12, height: 50)
+        
+        let topDivider = UIView()
+        topDivider.backgroundColor = .lightGray
+        
+        let buttomDivider = UIView()
+        topDivider.backgroundColor = .lightGray
+        
+        
+        let buttonStack = UIStackView(arrangedSubviews: [gridButton, listButton, bookMarkButton])
+        buttonStack.distribution = .fillEqually
+        
+        addSubview(buttonStack)
+        addSubview(topDivider)
+        addSubview(buttomDivider)
+        
+        buttonStack.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
+        topDivider.anchor(top: buttonStack.topAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
+        buttomDivider.anchor(top: buttonStack.bottomAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
+        
         
         
     }

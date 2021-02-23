@@ -13,6 +13,7 @@ class SignUpViewController: UIViewController {
     
     private var viewModel = SignUpViewModel()
     private var profileImage: UIImage?
+    weak var delegate: AuthenticaionDelegate?
     
     private let selectImageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -119,7 +120,9 @@ class SignUpViewController: UIViewController {
                 print("ユーザの登録へ失敗: \(err.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            
+            self.delegate?.authenticaionDidComplete()
+            
         }
     }
     

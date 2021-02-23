@@ -27,6 +27,7 @@ class FeedViewController: UICollectionViewController {
             try Auth.auth().signOut()
 //            ログアウト後ログイン画面へ遷移
             let controller = LoginViewController()
+            controller.delegate = self.tabBarController as? MainTabController
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)

@@ -6,28 +6,30 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
     
     //MARK: - Propaerties
+    
+    var viewModel: ProfileHeaderViewModel? {
+        didSet { configureProfileHeder() }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.image = #imageLiteral(resourceName: "ProfileImage")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.setDimensions(height: 80, width: 80)
         imageView.layer.cornerRadius = 80 / 2
-        
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        
-        label.text = "ここに名前が入る"
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        
         return label
     }()
     
@@ -80,14 +82,14 @@ class ProfileHeader: UICollectionReusableView {
         button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
         return button
     }()
-
+    
     let listButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
-        
+    
     let bookMarkButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
@@ -116,7 +118,7 @@ class ProfileHeader: UICollectionReusableView {
         editProfileButton.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24)
         
         
-  
+        
         let labelStack = UIStackView(arrangedSubviews: [postCountLabel,followingLabel,followersLabel])
         labelStack.distribution = .fillEqually
         addSubview(labelStack)
@@ -153,11 +155,17 @@ class ProfileHeader: UICollectionReusableView {
     
     @objc private func teppedEditProfileButton() {
         
-        print("teppedEditProfileButton")
         
     }
     
     //MARK: - Helpers
+    func configureProfileHeder() {
+        
+        guard let viewModel = viewModel else { return }
+        nameLabel.text = viewModel.fullName
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        
+    }
     
     func setAttributeText(value: Int, label: String) -> NSAttributedString {
         

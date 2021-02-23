@@ -21,9 +21,7 @@ struct AuthCredensials {
 struct AuthUser {
     
     static func loginUser(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
-        
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
-        
     }
     
     
@@ -42,11 +40,11 @@ struct AuthUser {
                 
                 let userData: [String: Any] = ["email": credentials.email,
                                                "fullName": credentials.fullName,
-                                               "profileImgaeUrl": imageUrl,
+                                               "profileImageUrl": imageUrl,
                                                "uid": uid,
                                                "userName": credentials.userName]
                 
-                Firestore.firestore().collection("users").document(uid).setData(userData, completion: completion)
+                COLLECTION_USERS.document(uid).setData(userData, completion: completion)
                 
                 
             }

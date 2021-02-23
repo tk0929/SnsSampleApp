@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol AuthenticaionDelegate: class {
+    func authenticaionDidComplete()
+}
+
 class LoginViewController: UIViewController {
     
     //MARK: - Propaerties
     
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticaionDelegate?
     
     private let loginLabel: UILabel = {
         let label = UILabel()
@@ -77,6 +82,7 @@ class LoginViewController: UIViewController {
         
         configureUI()
         configureNotificationObservers()
+        
     }
     
     //MARK: - Actions
@@ -92,13 +98,14 @@ class LoginViewController: UIViewController {
                 print("ログイン失敗: \(err.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticaionDidComplete()
         }
     }
     
     @objc private func tappedDontHaveAccountButton() {
-        let vc = SignUpViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let controller = SignUpViewController()
+        controller.delegate = delegate
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     

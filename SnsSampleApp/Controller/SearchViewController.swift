@@ -44,7 +44,7 @@ class SearchViewController: UITableViewController {
     
 }
 
-//MARK: - UITableViewDataSource
+    //MARK: - UITableViewDataSource
 
 extension SearchViewController {
     
@@ -62,6 +62,18 @@ extension SearchViewController {
     
 }
 
+    //MARK: - UITableViewDataSource
+
+extension SearchViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let controller = ProfileViewController(user: users[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+    
+}
 
 
 

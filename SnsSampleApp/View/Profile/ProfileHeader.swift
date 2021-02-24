@@ -18,11 +18,8 @@ class ProfileHeader: UICollectionReusableView {
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.setDimensions(height: 80, width: 80)
-        imageView.layer.cornerRadius = 80 / 2
         imageView.backgroundColor = .lightGray
         return imageView
     }()
@@ -107,6 +104,8 @@ class ProfileHeader: UICollectionReusableView {
         backgroundColor = .white
         
         addSubview(profileImageView)
+        profileImageView.setDimensions(height: 80, width: 80)
+        profileImageView.layer.cornerRadius = 80 / 2
         profileImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop: 16, paddingLeft: 12)
         
         

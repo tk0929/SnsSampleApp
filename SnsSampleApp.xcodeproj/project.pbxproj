@@ -15,6 +15,7 @@
 		4A55510525E4AFB5003401BD /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A55510425E4AFB5003401BD /* ProfileHeaderViewModel.swift */; };
 		4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6739FD25E0F98F00DDE7F4 /* FeedCell.swift */; };
 		4A673A0525E0FB7600DDE7F4 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A673A0425E0FB7600DDE7F4 /* UIView+Extension.swift */; };
+		4A8692F025E5450E00E60602 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8692EF25E5450E00E60602 /* UserCellViewModel.swift */; };
 		4A95ABCA25E14BD200C330D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABC925E14BD200C330D3 /* LoginViewController.swift */; };
 		4A95ABCE25E14BE600C330D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */; };
 		4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A95ABD025E165C200C330D3 /* CustumTextField.swift */; };
@@ -32,6 +33,7 @@
 		4AB19512259F80030039B53C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4AB19510259F80030039B53C /* .gitignore */; };
 		4AB19515259F80EF0039B53C /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB19514259F80EF0039B53C /* MainTabController.swift */; };
 		4ACEDABB25E244460084A848 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4ACEDABA25E244460084A848 /* GoogleService-Info.plist */; };
+		4AF4D87625E5266400998079 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF4D87525E5266400998079 /* UserCell.swift */; };
 		4AFD132125DD6299001B0873 /* FeedViewCoontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD132025DD6299001B0873 /* FeedViewCoontroller.swift */; };
 		4AFD132425DD62C7001B0873 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD132325DD62C7001B0873 /* SearchViewController.swift */; };
 		4AFD132725DD62DD001B0873 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFD132625DD62DD001B0873 /* NotificationViewController.swift */; };
@@ -50,6 +52,7 @@
 		4A55510425E4AFB5003401BD /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		4A6739FD25E0F98F00DDE7F4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		4A673A0425E0FB7600DDE7F4 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		4A8692EF25E5450E00E60602 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		4A95ABC925E14BD200C330D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A95ABCD25E14BE600C330D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4A95ABD025E165C200C330D3 /* CustumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumTextField.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		4AB19510259F80030039B53C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4AB19514259F80EF0039B53C /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		4ACEDABA25E244460084A848 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AF4D87525E5266400998079 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		4AFD132025DD6299001B0873 /* FeedViewCoontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCoontroller.swift; sourceTree = "<group>"; };
 		4AFD132325DD62C7001B0873 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4AFD132625DD62DD001B0873 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			children = (
 				4A44EAAF25E290920083C2E8 /* ProfileCell.swift */,
 				4A44EAB325E290A50083C2E8 /* ProfileHeader.swift */,
+				4AF4D87525E5266400998079 /* UserCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				4AB0D94B25E21AB600A1C7DF /* AuthenticationViewModel.swift */,
+				4A8692EF25E5450E00E60602 /* UserCellViewModel.swift */,
 				4A55510425E4AFB5003401BD /* ProfileHeaderViewModel.swift */,
 			);
 			path = ViewModel;
@@ -362,6 +368,7 @@
 				4AB0D94C25E21AB600A1C7DF /* AuthenticationViewModel.swift in Sources */,
 				4A6739FE25E0F98F00DDE7F4 /* FeedCell.swift in Sources */,
 				4AB0D94325E1716200A1C7DF /* UIViewController+Extension.swift in Sources */,
+				4A8692F025E5450E00E60602 /* UserCellViewModel.swift in Sources */,
 				4AA24C9025E24E1E0087175A /* AuthUser.swift in Sources */,
 				4AFD132A25DD62F3001B0873 /* ProfileViewController.swift in Sources */,
 				4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */,
@@ -369,6 +376,7 @@
 				4A5550F525E4A29E003401BD /* UserService.swift in Sources */,
 				4A44EAB025E290920083C2E8 /* ProfileCell.swift in Sources */,
 				4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */,
+				4AF4D87625E5266400998079 /* UserCell.swift in Sources */,
 				4AB19515259F80EF0039B53C /* MainTabController.swift in Sources */,
 				4A95ABD125E165C200C330D3 /* CustumTextField.swift in Sources */,
 				4AFD132125DD6299001B0873 /* FeedViewCoontroller.swift in Sources */,

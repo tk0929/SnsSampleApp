@@ -5,7 +5,7 @@
 //  Created by t.koike on 2021/02/23.
 //
 
-import Foundation
+import UIKit
 
 struct ProfileHeaderViewModel {
     
@@ -17,6 +17,21 @@ struct ProfileHeaderViewModel {
     
     var profileImageUrl: URL? {
         return URL(string: user.profileImageUrl)
+    }
+
+    var followButtonText: String {
+        if user.isCurrentUser {
+            return "プロフィールを編集"
+        }
+        return user.isFollowed ? "フォロー中" : "フォローする"
+    }
+    
+    var followButtonBackgroundColor: UIColor {
+        return user.isCurrentUser ? .white : .systemBlue
+    }
+    
+    var followButtonTextColor: UIColor {
+        return user.isCurrentUser ? .black : .white
     }
     
     init(user: User) {

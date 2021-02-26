@@ -164,6 +164,10 @@ class ProfileHeader: UICollectionReusableView {
         nameLabel.text = viewModel.fullName
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         
+        editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
+        editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
+        
     }
     
     func setAttributeText(value: Int, label: String) -> NSAttributedString {

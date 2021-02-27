@@ -12,11 +12,11 @@ private let headerReuseIdentifier = "ProfileHeader"
 
 class ProfileViewController: UICollectionViewController {
     
-    //MARK: - Propaerties
+//MARK: - Propaerties
     
     private var user: User
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     
     init(user: User) {
         self.user = user
@@ -31,9 +31,9 @@ class ProfileViewController: UICollectionViewController {
         configureCollectionView()
     }
     
-    //MARK: - API
-    
-    //MARK: - Helpers
+//MARK: - API
+
+//MARK: - Helpers
     
     private func configureCollectionView() {
         navigationItem.title = user.userName
@@ -61,8 +61,10 @@ extension ProfileViewController {
         
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind , withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! ProfileHeader
-        
+       
+        header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
+     
         
         return header
     }
@@ -98,5 +100,29 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: view.frame.width, height: 240)
     }
     
+}
+
+//MARK: - profileHeaderDelegate
+
+extension ProfileViewController: profileHeaderDelegate {
     
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+       
+        if user.isCurrentUser {
+            print("プロフィールを編集を表示")
+            
+        } else if user.isFollowed {
+            print("フォロー解除")
+        } else {
+            
+            UserService.follow(uid: user.uid) { error in
+                print("\(user.userName)をフォローしました")
+                
+            }
+           
+        }
+        
+    }
+    
+
 }

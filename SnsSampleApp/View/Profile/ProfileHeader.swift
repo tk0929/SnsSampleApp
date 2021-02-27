@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol profileHeaderDelegate: class {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User )
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     //MARK: - Propaerties
@@ -15,6 +19,9 @@ class ProfileHeader: UICollectionReusableView {
     var viewModel: ProfileHeaderViewModel? {
         didSet { configureProfileHeder() }
     }
+    
+    weak var delegate: profileHeaderDelegate?
+    
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -153,8 +160,8 @@ class ProfileHeader: UICollectionReusableView {
     //MARK: - Actions
     
     @objc private func teppedEditProfileButton() {
-        
-        
+        guard let viewModel = viewModel else { return }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
     //MARK: - Helpers

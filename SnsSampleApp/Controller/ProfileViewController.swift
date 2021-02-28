@@ -29,9 +29,26 @@ class ProfileViewController: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        checkIfUserIsFollowed()
+        fetchUserStats()
+        
     }
     
 //MARK: - API
+    
+    func checkIfUserIsFollowed() {
+        UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func fetchUserStats() {
+        UserService.fetchUserStats(uid: user.uid) { stats in
+            self.user.stats = stats
+            self.collectionView.reloadData()
+        }
+    }
 
 //MARK: - Helpers
     
@@ -59,13 +76,11 @@ extension ProfileViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind , withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! ProfileHeader
        
         header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
-     
-        
+    
         return header
     }
     
@@ -112,11 +127,15 @@ extension ProfileViewController: profileHeaderDelegate {
             print("プロフィールを編集を表示")
             
         } else if user.isFollowed {
-            print("フォロー解除")
-        } else {
+            UserService.unfollow(uid: user.uid) { error in
+                self.user.isFollowed = false
+                self.collectionView.reloadData()
+            }
             
+        } else {
             UserService.follow(uid: user.uid) { error in
-                print("\(user.userName)をフォローしました")
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
                 
             }
            

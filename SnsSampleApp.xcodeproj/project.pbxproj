@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1D474325EBC2E500412586 /* UserStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D474225EBC2E400412586 /* UserStats.swift */; };
 		4A44EAB025E290920083C2E8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44EAAF25E290920083C2E8 /* ProfileCell.swift */; };
 		4A44EAB425E290A50083C2E8 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44EAB325E290A50083C2E8 /* ProfileHeader.swift */; };
 		4A5550F525E4A29E003401BD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5550F425E4A29E003401BD /* UserService.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1D474225EBC2E400412586 /* UserStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStats.swift; sourceTree = "<group>"; };
 		4A44EAAF25E290920083C2E8 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		4A44EAB325E290A50083C2E8 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		4A5550F425E4A29E003401BD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				4A55510125E4AA25003401BD /* User.swift */,
+				4A1D474225EBC2E400412586 /* UserStats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				4AFD132A25DD62F3001B0873 /* ProfileViewController.swift in Sources */,
 				4AB0D94625E17ACA00A1C7DF /* UIButton+Extension.swift in Sources */,
 				4A55510525E4AFB5003401BD /* ProfileHeaderViewModel.swift in Sources */,
+				4A1D474325EBC2E500412586 /* UserStats.swift in Sources */,
 				4A5550F525E4A29E003401BD /* UserService.swift in Sources */,
 				4A44EAB025E290920083C2E8 /* ProfileCell.swift in Sources */,
 				4AB194F0259F7D050039B53C /* AppDelegate.swift in Sources */,

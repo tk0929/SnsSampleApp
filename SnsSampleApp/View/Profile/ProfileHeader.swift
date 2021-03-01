@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol profileHeaderDelegate: class {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User )
+}
+
 class ProfileHeader: UICollectionReusableView {
     
     //MARK: - Propaerties
@@ -15,6 +19,9 @@ class ProfileHeader: UICollectionReusableView {
     var viewModel: ProfileHeaderViewModel? {
         didSet { configureProfileHeder() }
     }
+    
+    weak var delegate: profileHeaderDelegate?
+    
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,32 +52,24 @@ class ProfileHeader: UICollectionReusableView {
     }()
     
     
-    private lazy var postCountLabel: UILabel = {
+    private lazy var postLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = setAttributeText(value: 1, label: "投稿")
         return label
-        
     }()
     
     private lazy var followingLabel: UILabel = {
         let label = UILabel()
-        
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = setAttributeText(value: 1, label: "フォロー")
-        
         return label
     }()
     
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
-        
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = setAttributeText(value: 1, label: "フォロワー")
-        
         return label
     }()
     
@@ -118,7 +117,7 @@ class ProfileHeader: UICollectionReusableView {
         
         
         
-        let labelStack = UIStackView(arrangedSubviews: [postCountLabel,followingLabel,followersLabel])
+        let labelStack = UIStackView(arrangedSubviews: [postLabel,followingLabel,followersLabel])
         labelStack.distribution = .fillEqually
         addSubview(labelStack)
         labelStack.centerY(inView: profileImageView)
@@ -153,26 +152,29 @@ class ProfileHeader: UICollectionReusableView {
     //MARK: - Actions
     
     @objc private func teppedEditProfileButton() {
-        
-        
+        guard let viewModel = viewModel else { return }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
     //MARK: - Helpers
     func configureProfileHeder() {
         
         guard let viewModel = viewModel else { return }
+        
         nameLabel.text = viewModel.fullName
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         
+        editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
+        editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
+        
+        postLabel.attributedText = viewModel.numberOfPosts
+        followersLabel.attributedText = viewModel.numberOfFollowers
+        followingLabel.attributedText = viewModel.numberOfFollowing
+        
     }
     
-    func setAttributeText(value: Int, label: String) -> NSAttributedString {
-        
-        let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
-        
-        return attributeText
-    }
+   
     
     
     

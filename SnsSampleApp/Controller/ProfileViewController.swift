@@ -12,11 +12,11 @@ private let headerReuseIdentifier = "ProfileHeader"
 
 class ProfileViewController: UICollectionViewController {
     
-    //MARK: - Propaerties
+//MARK: - Propaerties
     
     private var user: User
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     
     init(user: User) {
         self.user = user
@@ -29,11 +29,28 @@ class ProfileViewController: UICollectionViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        checkIfUserIsFollowed()
+        fetchUserStats()
+        
     }
     
-    //MARK: - API
+//MARK: - API
     
-    //MARK: - Helpers
+    func checkIfUserIsFollowed() {
+        UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func fetchUserStats() {
+        UserService.fetchUserStats(uid: user.uid) { stats in
+            self.user.stats = stats
+            self.collectionView.reloadData()
+        }
+    }
+
+//MARK: - Helpers
     
     private func configureCollectionView() {
         navigationItem.title = user.userName
@@ -59,11 +76,11 @@ extension ProfileViewController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind , withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! ProfileHeader
-        
+       
+        header.delegate = self
         header.viewModel = ProfileHeaderViewModel(user: user)
-        
+    
         return header
     }
     
@@ -98,5 +115,33 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: view.frame.width, height: 240)
     }
     
+}
+
+//MARK: - profileHeaderDelegate
+
+extension ProfileViewController: profileHeaderDelegate {
     
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+       
+        if user.isCurrentUser {
+            print("プロフィールを編集を表示")
+            
+        } else if user.isFollowed {
+            UserService.unfollow(uid: user.uid) { error in
+                self.user.isFollowed = false
+                self.collectionView.reloadData()
+            }
+            
+        } else {
+            UserService.follow(uid: user.uid) { error in
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
+                
+            }
+           
+        }
+        
+    }
+    
+
 }

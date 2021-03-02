@@ -7,10 +7,11 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabController: UITabBarController {
     
-    //MARK: - Propaerties
+//MARK: - Propaerties
     
     private var user: User? {
         didSet {
@@ -19,7 +20,7 @@ class MainTabController: UITabBarController {
         }
     }
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class MainTabController: UITabBarController {
         
     }
     
-    //MARK: - API
+//MARK: - API
     private func fetchCurrentUser() {
         UserService.fetchCurrentUserData { userData in
             self.user = userData
@@ -51,11 +52,12 @@ class MainTabController: UITabBarController {
     }
     
     
-    //MARK: - Helpers
+//MARK: - Helpers
     
     private func configureViewControllers(withUser user: User) {
         
         view.backgroundColor = .white
+        self.delegate = self
         
         let layout = UICollectionViewFlowLayout()
         
@@ -83,10 +85,19 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black
         return nav
     }
+    
+    func didFinishPickingMedia(_ picker: YPImagePicker) {
+        picker.didFinishPicking { items, _ in
+            guard let selectedImgae = items.singlePhoto?.image else { return }
+            print("DEBUG: \(selectedImgae)")
+//            ここで投稿アップロード画面へ遷移？
+        }
+        
+    }
+    
 }
 
-
-    //MARK: - AuthenticaionDelegate
+//MARK: - AuthenticaionDelegate
 
 extension MainTabController: AuthenticaionDelegate {
     
@@ -95,4 +106,34 @@ extension MainTabController: AuthenticaionDelegate {
         self.dismiss(animated: true, completion: nil)
         
     }
+}
+
+//MARK: - UITabBarControllerDelegate
+
+extension MainTabController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+            
+            didFinishPickingMedia(picker)
+        }
+        
+        return true
+    }
+    
 }

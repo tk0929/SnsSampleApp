@@ -88,9 +88,16 @@ class MainTabController: UITabBarController {
     
     func didFinishPickingMedia(_ picker: YPImagePicker) {
         picker.didFinishPicking { items, _ in
-            guard let selectedImgae = items.singlePhoto?.image else { return }
-            print("DEBUG: \(selectedImgae)")
-//            ここで投稿アップロード画面へ遷移？
+            picker.dismiss(animated: true) {
+                
+                guard let selectedImgae = items.singlePhoto?.image else { return }
+                let controller = UploadPostViewController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: false, completion: nil)
+                
+            }
+            
         }
         
     }

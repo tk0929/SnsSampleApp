@@ -11,11 +11,25 @@ class UploadPostViewController: UIViewController {
     
     //MARK: - Propaerties
     
+    private let photoImgaeView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private let captionTextView: UITextView = {
+        let textView = UITextView()
+        return textView
+    }()
+    
+    
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
         confitureUI()
         
     }
@@ -36,7 +50,9 @@ class UploadPostViewController: UIViewController {
     
     //MARK: - Helpers
     private  func confitureUI() {
-        navigationItem.title = "投稿"
+        
+        view.backgroundColor = .white
+        navigationItem.title = "投稿画面"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "シェア", style: .done, target: self, action: #selector(didTapShareButton))
         
